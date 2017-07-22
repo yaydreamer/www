@@ -12,6 +12,8 @@
       body {
         height: 100%;
         overflow: auto;
+      }
+      #container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -39,19 +41,54 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      #scroller {
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        overflow: auto;
+      }
+      #scroll-contents {
+        height:10000px;
+      }
     </style>
     <script type="text/javascript">
-    var progress = 0;
-    window.addEventListener("wheel", function(e){
-      progress += e.deltaY/10000;
-      var title = document.getElementById("title")
-      var easeOutQuint = function(t) {return 1+(--t)*t*t*t*t;};
-      title.style.transform = "rotate("+(4*360*progress)+"deg) scale("+Math.max(0, 1 + .6*progress)+") ";
-      title.style.opacity = easeOutQuint(Math.max(0, 1 - (.6*progress)));
-    }.bind(this));
+    var load = function(){
+      console.log("load")
+      var progress = 0;
+      var useWheel = false;
+      var update = function(){
+        var title = document.getElementById("title")
+        var easeOutQuint = function(t) {return 1+(--t)*t*t*t*t;};
+        title.style.transform = "rotate("+(4*360*progress)+"deg) scale("+Math.max(0, 1 + .6*progress)+") ";
+        title.style.opacity = easeOutQuint(Math.max(0, 1 - (.6*progress)));
+      }.bind(this)
+      window.addEventListener("wheel", function(e){
+        useWheel = true;
+        progress += e.deltaY/10000;
+        update();
+      }.bind(this));
+      document.getElementById("scroller").addEventListener("scroll", function(e){
+        if(useWheel) {
+          setTimeout(function(){
+              useWheel = false;
+          }, 100);
+          return;
+        }
+        var d = document.getElementById("scroller").scrollTop;
+        progress = d/10000;
+        update();
+      });
+    }.bind(this);
     </script>
   </head>
-  <body>
-    <div id="title">yaydreamer.</div>
+  <body onload="load()">
+    <div id="container">
+        <div id="title">yaydreamer.</div>
+    </div>
+    <div id="scroller">
+      <div id="scroll-contents"></div>
+    </div>
   </body>
 </html>
