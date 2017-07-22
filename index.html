@@ -5,19 +5,22 @@
     <title>yaydreamer</title>
     <link rel=icon href="yay-icon.jpg" />
     <style media="screen">
-      body {
-        background: black;
+      html {
+        overflow: hidden;
+        height: 100%;
       }
-      #bg {
+      body {
+        height: 100%;
+        overflow: auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        position:fixed;
+        position:absolute;
         top: 0;
         left:0;
         right:0;
         bottom:0;
-        background: url(yay.jpg) fixed;
+        background: url(yay.jpg);
         /*
           "Explosion of Love" by Thomas Hawk.
           https://www.flickr.com/photos/thomashawk/7405401776
@@ -26,7 +29,6 @@
         background-size: cover;
       }
       #title {
-        /*margin-top: 24%;*/
         margin-bottom: 100px;
         font-family: sans-serif;
         font-size: 64px;
@@ -34,31 +36,22 @@
         padding: 0px 14px 6px 14px;
         background-color: black;
       }
-      #sneaky-scroller {
-        margin-top: 10000px;
-        background-color: rgba(255, 0, 0, 1);
-      }
       ::-webkit-scrollbar {
         display: none;
       }
     </style>
     <script type="text/javascript">
-    window.addEventListener("scroll", function(e){
-      var doc = document.documentElement;
-      var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
-      var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-      var progress = top / (10000 - window.innerHeight);
+    var progress = 0;
+    window.addEventListener("wheel", function(e){
+      progress += e.deltaY/10000;
       var title = document.getElementById("title")
-      title.style.transform = "rotate("+(4*360*progress)+"deg)";
-      title.style.opacity = (1 - 1*progress);
-    });
+      var easeOutQuint = function(t) {return 1+(--t)*t*t*t*t;};
+      title.style.transform = "rotate("+(4*360*progress)+"deg) scale("+Math.max(0, 1 + .6*progress)+") ";
+      title.style.opacity = easeOutQuint(Math.max(0, 1 - (.6*progress)));
+    }.bind(this));
     </script>
   </head>
   <body>
-
-    <div id="sneaky-scroller"></div>
-    <div id="bg">
-      <div id="title">yaydreamer.</div>
-    </div>
+    <div id="title">yaydreamer.</div>
   </body>
 </html>
