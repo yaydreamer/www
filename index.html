@@ -71,9 +71,6 @@
       }.bind(this));
       document.getElementById("scroller").addEventListener("scroll", function(e){
         if(useWheel) {
-          setTimeout(function(){
-              useWheel = false;
-          }, 100);
           return;
         }
         var d = document.getElementById("scroller").scrollTop;
