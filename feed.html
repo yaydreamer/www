@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>yaydreamer</title>
+    <link rel=icon href="yay-icon.jpg" />
+
+  	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+  	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+  	<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet">
+  	<!--[if lt IE 9]>
+  		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+    <style>
+      /* tumblr feed styles */
+      body {
+        font-family: sans-serif;
+        /*color: #eee;*/
+        /*background-color: black;*/
+        font-weight: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #title-wrapper {
+        width: 100%;
+        max-width: 500px;
+        display:flex;
+      }
+      #title {
+        font-size: 36px;
+        color: #eee;
+        padding: 0px 14px 6px 14px;
+        background-color: #222;
+        margin-top: 8px;
+        margin-bottom: 16px;
+        flex-shrink: 1;
+      }
+  		.post {
+        max-width: 500px;
+  			margin-bottom: 16px;
+        background: #222;
+        color: #eee;
+        /*border-radius: 8px;*/
+        overflow:hidden;
+  		}
+  		.post img {
+        width: 100%;
+  			/*width: calc(100% + 24px);
+        margin:-12px;*/
+  		}
+  		.post i {
+  			font-size: 26px;
+  			float: left;
+  			/*display: block;*/
+        display:none;
+  			width: auto;
+  		}
+
+      .post .content .photo {
+        margin: -16px -16px 0px -16px;
+      }
+  		.post .content {
+        padding: 16px 16px 0px 16px;
+        /*padding-left: 16px;
+        padding-right: 16px;*/
+        line-height: 1.4em;
+  		}
+      .post a {
+        color: #FF5733;
+      }
+  		.post h3 {
+  			line-height: 100%;
+  		}
+      .post .footer {
+        display: flex;
+        justify-content: flex-end;
+        align-content: center;
+        line-height: 24px;
+        padding: 6px 12px;
+      }
+      .post .permalink {
+        font-size: 24px;
+        text-decoration: none;
+        line-height: 23px;
+        padding-left: 6px;
+      }
+  		.post-date {
+        color: #222;
+  			font-size: 9px;
+  		}
+      .post .link-text {
+        line-height: 1.4em;
+      }
+
+      .post .quote {
+        font-size: 32px;
+        padding-top: 12px;
+      }
+      .post .quote .quotes {
+        font-size:48px;
+        padding: 0px 8px;
+      }
+      .post .quote-source {
+          margin: 16px 0px 0px 8px;
+      }
+      .photo-caption {}
+  		.song-caption {}
+
+      /* Hide Spotify album art */
+  		.spotify_audio_player {
+  			height: 95px !important;
+  			width: 100% !important;
+  		}
+  		.spotify_audio_player #widgetContainer #engageView,
+  		.spotify_audio_player #widgetContainer #mainContainer {
+  			display: none !important;
+  		}
+  		/*
+  		   Responsive youtube videos
+  		   source: http://avexdesigns.com/responsive-youtube-embed/
+  		*/
+  		.video-container {
+  			position: relative;
+  			padding-bottom: 56.25%;
+  			padding-top: 30px;
+  			height: 0;
+  			overflow: hidden;
+  		}
+  		.video-container iframe,
+  		.video-container object,
+  		.video-container embed {
+  			position: absolute;
+  			top: 0;
+  			left: 0;
+  			width: 100%;
+  			height: 100%;
+  		}
+  		/* end */
+  	</style>
+
+
+    <style media="screen">
+      body {
+        background: url(yay.jpg) fixed;
+        /*
+          "Explosion of Love" by Thomas Hawk.
+          https://www.flickr.com/photos/thomashawk/7405401776
+          https://creativecommons.org/licenses/by-nc/2.0/
+        */
+        background-size: cover;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="title-wrapper">
+        <span id="title">yaydreamer.</span>
+    </div>
+    <div id="main"></div>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+    <script src="tumblr-parser.js"></script>
+
+  </body>
+</html>
